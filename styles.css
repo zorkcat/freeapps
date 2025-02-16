@@ -42,11 +42,13 @@ nav ul li a.active {
 
 main {
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* 4 apps per line */
   gap: 20px;
 }
 
@@ -71,6 +73,13 @@ main {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 10px 10px 0 0; /* Rounded corners only at the top */
+}
+
+.app-link p {
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 footer {
