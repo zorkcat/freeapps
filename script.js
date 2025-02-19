@@ -78,3 +78,5 @@ sendMessageButton.addEventListener('click', () => {
     alert('Please enter a suggestion before sending.');
   }
 });
+
+
