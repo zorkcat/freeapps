@@ -56,6 +56,15 @@ header .container {
   justify-content: space-between;
 }
 
+/* Mobile Navigation Toggle */
+#nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 header h1 {
   margin: 0;
   font-size: 1.5rem;
@@ -293,7 +302,7 @@ footer {
   background-color: #1D4ED8;
 }
 
-/* Search Form - Enhanced */
+/* Enhanced Search Container */
 .search-container {
   display: flex;
   align-items: center;
@@ -349,17 +358,32 @@ footer {
   color: var(--white);
 }
 
-/* Media Queries */
+/* Media Queries for Mobile */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 1.2rem;
+  /* Show mobile nav toggle and hide full nav by default */
+  #nav-toggle {
+    display: block;
   }
-
-  nav ul {
+  nav#mobile-nav ul {
+    display: none;
     flex-direction: column;
     gap: 0.5rem;
+    margin-top: 1rem;
   }
-
+  nav#mobile-nav.active ul {
+    display: flex;
+  }
+  
+  header .container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  header h1 {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+  
   #hero h2 {
     font-size: 2rem;
   }

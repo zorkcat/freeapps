@@ -9,11 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     appCards.forEach((card) => {
       const appName = card.getAttribute('data-name').toLowerCase();
-      if (appName.includes(query)) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+      card.style.display = appName.includes(query) ? 'block' : 'none';
     });
   });
 
@@ -31,6 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
+  });
+
+  // Mobile Navigation Toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  navToggle.addEventListener('click', () => {
+    mobileNav.classList.toggle('active');
   });
 });
 
@@ -56,15 +59,11 @@ sendMessageButton.addEventListener('click', () => {
   const message = chatInput.value.trim();
   if (message) {
     const webhookURL = 'https://discord.com/api/webhooks/1340768659605295261/Rc0jJBLCQxNzbfL-77sxrk4qUf9kXwaECETVzb-4Std5QDKntnn4ij4RmMVKgw7XqWZb';
-    const payload = {
-      content: `New app suggestion: ${message}`
-    };
+    const payload = { content: `New app suggestion: ${message}` };
 
     fetch(webhookURL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     })
     .then(response => {
