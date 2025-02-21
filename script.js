@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // Theme Toggle Functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
 });
 
 // Chat Support Logic
@@ -78,5 +84,3 @@ sendMessageButton.addEventListener('click', () => {
     alert('Please enter a suggestion before sending.');
   }
 });
-
-

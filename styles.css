@@ -17,6 +17,14 @@ body {
   line-height: 1.6;
 }
 
+/* Dark Mode Overrides */
+body.dark-mode {
+  --background-color: #121212;
+  --secondary-color: #E5E7EB;
+  --white: #1F2937;
+}
+
+/* Container */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -42,6 +50,12 @@ header {
   z-index: 1000;
 }
 
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 header h1 {
   margin: 0;
   font-size: 1.5rem;
@@ -63,6 +77,21 @@ nav ul li a {
 
 nav ul li a.active {
   color: var(--primary-color);
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: #1D4ED8;
 }
 
 /* Hero Section */
@@ -128,16 +157,17 @@ nav ul li a.active {
 
 .app-card {
   background-color: var(--white);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: center;
-  padding: 1rem;
-  transition: transform 0.3s ease;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .app-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .app-card img {
@@ -145,11 +175,13 @@ nav ul li a.active {
   height: 150px;
   object-fit: contain;
   margin-bottom: 1rem;
+  border-radius: 10px;
 }
 
 .app-card h4 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  color: var(--secondary-color);
 }
 
 .app-card p {
@@ -160,16 +192,17 @@ nav ul li a.active {
 
 .download-btn {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   background-color: var(--primary-color);
   color: var(--white);
-  border-radius: 4px;
+  border-radius: 30px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .download-btn:hover {
   background-color: #1D4ED8;
+  transform: scale(1.05);
 }
 
 /* About Section */
@@ -260,57 +293,7 @@ footer {
   background-color: #1D4ED8;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.2rem;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  #hero h2 {
-    font-size: 2rem;
-  }
-
-  #hero p {
-    font-size: 1rem;
-  }
-
-  .app-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
-  .chat-support-box {
-    width: 90%;
-    right: 5%;
-  }
-}
-/* Hero Section */
-#hero {
-  text-align: center;
-  padding: 4rem 0;
-  background-color: var(--white);
-}
-
-#hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-#hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-/* Search Form */
-#search-form {
-  display: flex;
-  justify-content: center;
-}
-
+/* Search Form - Enhanced */
 .search-container {
   display: flex;
   align-items: center;
@@ -366,8 +349,17 @@ footer {
   color: var(--white);
 }
 
-/* Responsive Design */
+/* Media Queries */
 @media (max-width: 768px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   #hero h2 {
     font-size: 2rem;
   }
@@ -376,104 +368,16 @@ footer {
     font-size: 1rem;
   }
 
-  .search-container {
-    max-width: 90%;
-  }
-}
-/* Popular Apps Section */
-#apps {
-  padding: 2rem 0;
-}
-
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.fire-icon {
-  font-size: 1.5rem;
-  animation: fireAnimation 1.5s infinite;
-}
-
-@keyframes fireAnimation {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
-}
-
-/* App Grid */
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-/* App Card */
-.app-card {
-  background-color: var(--white);
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  text-align: center;
-  padding: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.app-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.app-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-}
-
-.app-card h4 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: var(--secondary-color);
-}
-
-.app-card p {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
-.download-btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary-color);
-  color: var(--white);
-  border-radius: 30px;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.download-btn:hover {
-  background-color: #1D4ED8;
-  transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 1.75rem;
-  }
-
   .app-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .chat-support-box {
+    width: 90%;
+    right: 5%;
+  }
+
+  .search-container {
+    max-width: 90%;
   }
 }
