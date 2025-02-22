@@ -21,7 +21,7 @@ body {
 body.dark-mode {
   --background-color: #131313;
   --secondary-color: #E5E7EB;
-  --white: #151a21;
+  --white: #191919;
 }
 
 /* Container */
@@ -88,21 +88,84 @@ nav ul li a.active {
   color: var(--primary-color);
 }
 
-/* Theme Toggle Button */
-#theme-toggle {
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  color: var(--white);
+/* Theme Switch */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body.dark-mode {
+  animation: fadeIn 1s ease;
+}
+body.light-mode {
+  animation: fadeIn 1s ease;
+}
+
+.slider {
+  position: absolute;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: background-color 0.4s ease;
+  border-radius: 34px;
 }
 
-#theme-toggle:hover {
-  background-color: #1D4ED8;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: transform 0.4s ease, background-color 0.4s ease;
+  border-radius: 50%;
 }
 
+input:checked + .slider {
+  background-color: #2563EB; /* Primary color */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded Slider */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Smooth Theme Transition */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+header, footer, .app-card, .search-container, .tab-link {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
 /* Hero Section */
 #hero {
   text-align: center;
@@ -404,4 +467,65 @@ footer {
   .search-container {
     max-width: 90%;
   }
+}
+.tabs-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+}
+
+.tab-link {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab-link.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.tab-link:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Filter Dropdown */
+.filter select {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 30px;
+  font-size: 1rem;
+  background-color: var(--white);
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter select:hover {
+  border-color: #1D4ED8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Tab Switching Animation */
+.app-grid {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.app-grid.hidden {
+  opacity: 0;
+  pointer-events: none;
 }

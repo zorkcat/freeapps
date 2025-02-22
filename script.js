@@ -23,17 +23,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Theme Toggle Functionality
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('theme-toggle');
+
+themeToggle.addEventListener('change', () => {
+  document.body.classList.toggle('dark-mode');
+
+  // Save the theme preference in localStorage
+  const isDarkMode = document.body.classList.contains('dark-mode');
+  localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+});
+
+// Check for saved theme preference on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.checked = true; // Ensure the toggle switch reflects the saved theme
+  } else {
+    document.body.classList.remove('dark-mode');
+    themeToggle.checked = false;
+  }
+});
 
   // Mobile Navigation Toggle
   const navToggle = document.getElementById('nav-toggle');
   const mobileNav = document.getElementById('mobile-nav');
   navToggle.addEventListener('click', () => {
     mobileNav.classList.toggle('active');
+  });
+
+  // Tab Switching Functionality
+  const tabs = document.querySelectorAll('.tab-link');
+  const appGrid = document.querySelector('.app-grid');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove('active'));
+      // Add active class to the clicked tab
+      tab.classList.add('active');
+      // Get the tab type (all, apps, games)
+      const tabType = tab.getAttribute('data-tab');
+
+      // Smoothly hide the grid
+      appGrid.classList.add('hidden');
+      setTimeout(() => {
+        // Filter app cards based on the selected tab
+        const appCards = document.querySelectorAll('.app-card');
+        appCards.forEach(card => {
+          const cardType = card.getAttribute('data-type');
+          if (tabType === 'all' || cardType === tabType) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        // Smoothly show the grid
+        appGrid.classList.remove('hidden');
+      }, 300); // Match the transition duration
+    });
   });
 });
 
