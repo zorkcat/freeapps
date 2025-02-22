@@ -529,3 +529,98 @@ footer {
   opacity: 0;
   pointer-events: none;
 }
+/* Header Container */
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+/* NEWS Button Container */
+.news-button-container {
+  flex: 1; /* Take up remaining space */
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  align-items: center; /* Center the button vertically */
+}
+
+/* NEWS Button with RGB Effect */
+.news-button {
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(0, 255, 0, 0.8), rgba(0, 0, 255, 0.8));
+  background-size: 200% 200%;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-position 0.5s ease, transform 0.3s ease;
+  animation: rgbAnimation 3s infinite alternate;
+}
+
+.news-button:hover {
+  transform: scale(1.05);
+  animation: none; /* Stop animation on hover */
+  background-position: 100% 100%;
+}
+
+/* RGB Animation */
+@keyframes rgbAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* Download App Promotion Section */
+#download-apps {
+  padding: 2rem 0;
+  text-align: center;
+  background-color: var(--white);
+}
+
+#download-apps h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+#download-apps p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: var(--secondary-color);
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.download-buttons .download-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-buttons .download-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Specific button styles */
+.android-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.ios-btn {
+  background-color: var(--accent-color);
+  color: var(--white);
+}

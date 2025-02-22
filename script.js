@@ -132,3 +132,24 @@ sendMessageButton.addEventListener('click', () => {
     alert('Please enter a suggestion before sending.');
   }
 });
+// Get elements
+const newsButton = document.getElementById('news-button');
+const downloadOverlay = document.getElementById('download-overlay');
+const closeOverlay = document.getElementById('close-overlay');
+
+// Show overlay when NEWS button is clicked
+newsButton.addEventListener('click', () => {
+  downloadOverlay.style.display = 'flex';
+});
+
+// Hide overlay when close button is clicked
+closeOverlay.addEventListener('click', () => {
+  downloadOverlay.style.display = 'none';
+});
+
+// Hide overlay when clicking outside the content
+window.addEventListener('click', (event) => {
+  if (event.target === downloadOverlay) {
+    downloadOverlay.style.display = 'none';
+  }
+});
