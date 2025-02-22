@@ -19,7 +19,7 @@ body {
 
 /* Dark Mode Overrides */
 body.dark-mode {
-  --background-color: #121212;
+  --background-color: #131313;
   --secondary-color: #E5E7EB;
   --white: #1F2937;
 }
